@@ -9,7 +9,9 @@ import './db/pool';
 const app = express();
 const PORT = process.env.PORT || 3200;
 
-app.use(cors());
+app.use(cors({
+    origin: process.env.FRONTEND_URL,
+}));
 app.use(express.json());
 
 app.use('/api/auth', authRoutes);
