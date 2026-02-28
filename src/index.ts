@@ -12,9 +12,8 @@ const PORT = process.env.PORT || 3200;
 app.use(cors({
     origin: (origin, callback) => {
         const allowedOrigins = [
-            process.env.FRONTEND_URL,
+            '*',
             'http://localhost:5173',
-            'http://localhost:3000',
         ].filter(Boolean);
 
         if (!origin || allowedOrigins.includes(origin)) {
