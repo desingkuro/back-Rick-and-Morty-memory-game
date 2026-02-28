@@ -11,7 +11,7 @@ import './db/pool';
 const app = express();
 
 app.use(cors({
-    origin: ['*', 'http://localhost:3000', 'http://localhost:5173'],
+    origin: ['*', 'http://localhost:3000', 'http://localhost:5173', 'https://memorygamerickandmorty.netlify.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
