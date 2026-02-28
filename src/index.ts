@@ -25,13 +25,13 @@ app.get('/health', (_: express.Request, res: express.Response) => {
     res.json({ status: 'ok' });
 });
 
-// ✅ Solo escucha en local
-if (process.env.NODE_ENV !== 'production') {
-    const PORT = process.env.PORT || 3200;
-    app.listen(PORT, () => {
-        console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
-    });
-}
+// ✅ Railway y otros servicios de hosting requieren que el servidor escuche en 0.0.0.0
+const PORT = process.env.PORT || 3200;
+const HOST = '0.0.0.0';
+
+app.listen(Number(PORT), HOST, () => {
+    console.log(`🚀 Servidor corriendo en http://${HOST}:${PORT}`);
+});
 
 // ✅ Vercel usa este export
 export default app;
