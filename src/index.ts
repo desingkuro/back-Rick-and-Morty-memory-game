@@ -26,8 +26,11 @@ app.get('/health', (_: express.Request, res: express.Response) => {
 });
 
 // ✅ Railway y otros servicios de hosting requieren que el servidor escuche en 0.0.0.0
-const PORT = process.env.PORT || 3200;
+// Usamos 3000 como fallback para alinear con el Dockerfile y estándares
+const PORT = process.env.PORT || 3000;
 const HOST = '0.0.0.0';
+
+console.log(`Debug: process.env.PORT is ${process.env.PORT}`);
 
 app.listen(Number(PORT), HOST, () => {
     console.log(`🚀 Servidor corriendo en http://${HOST}:${PORT}`);
