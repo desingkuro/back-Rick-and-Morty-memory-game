@@ -25,6 +25,10 @@ app.get('/health', (_: express.Request, res: express.Response) => {
     res.json({ status: 'ok' });
 });
 
-app.listen(PORT, () => {
-    console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+    });
+}
+
+export default app;
