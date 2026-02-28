@@ -10,21 +10,9 @@ const app = express();
 const PORT = process.env.PORT || 3200;
 
 app.use(cors({
-    origin: (origin, callback) => {
-        const allowedOrigins = [
-            '*',
-            'http://localhost:5173',
-        ].filter(Boolean);
-
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error(`CORS bloqueado para origen: ${origin}`));
-        }
-    },
+    origin: '*', 
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
 }));
 
 app.options('*', cors());
